@@ -1,0 +1,459 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<title>Data Import</title>
+
+<base target="_blank"/>
+
+<style type="text/css">
+body, td {
+   font-family: sans-serif;
+   background-color: white;
+   font-size: 12px;
+   margin: 8px;
+}
+
+tt, code, pre {
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+}
+
+h1 { 
+   font-size:2.2em; 
+}
+
+h2 { 
+   font-size:1.8em; 
+}
+
+h3 { 
+   font-size:1.4em; 
+}
+
+h4 { 
+   font-size:1.0em; 
+}
+
+h5 { 
+   font-size:0.9em; 
+}
+
+h6 { 
+   font-size:0.8em; 
+}
+
+a:visited {
+   color: rgb(50%, 0%, 50%);
+}
+
+pre {	
+   margin-top: 0;
+   max-width: 95%;
+   border: 1px solid #ccc;
+}
+
+pre code {
+   display: block; padding: 0.5em;
+}
+
+code.r {
+   background-color: #F8F8F8;
+}
+
+table, td, th {
+  border: none;
+}
+
+blockquote {
+   color:#666666;
+   margin:0;
+   padding-left: 1em;
+   border-left: 0.5em #EEE solid;
+}
+
+hr {
+   height: 0px;
+   border-bottom: none;
+   border-top-width: thin;
+   border-top-style: dotted;
+   border-top-color: #999999;
+}
+
+@media print {
+   * { 
+      background: transparent !important; 
+      color: black !important; 
+      filter:none !important; 
+      -ms-filter: none !important; 
+   }
+
+   body { 
+      font-size:12pt; 
+      max-width:100%; 
+   }
+       
+   a, a:visited { 
+      text-decoration: underline; 
+   }
+
+   hr { 
+      visibility: hidden;
+      page-break-before: always;
+   }
+
+   pre, blockquote { 
+      padding-right: 1em; 
+      page-break-inside: avoid; 
+   }
+
+   tr, img { 
+      page-break-inside: avoid; 
+   }
+
+   img { 
+      max-width: 100% !important; 
+   }
+
+   @page :left { 
+      margin: 15mm 20mm 15mm 10mm; 
+   }
+     
+   @page :right { 
+      margin: 15mm 10mm 15mm 20mm; 
+   }
+
+   p, h2, h3 { 
+      orphans: 3; widows: 3; 
+   }
+
+   h2, h3 { 
+      page-break-after: avoid; 
+   }
+}
+
+</style>
+
+<!-- Styles for R syntax highlighter -->
+<style type="text/css">
+   pre .operator,
+   pre .paren {
+     color: rgb(104, 118, 135)
+   }
+
+   pre .literal {
+     color: rgb(88, 72, 246)
+   }
+
+   pre .number {
+     color: rgb(0, 0, 205);
+   }
+
+   pre .comment {
+     color: rgb(76, 136, 107);
+   }
+
+   pre .keyword {
+     color: rgb(0, 0, 255);
+   }
+
+   pre .identifier {
+     color: rgb(0, 0, 0);
+   }
+
+   pre .string {
+     color: rgb(3, 106, 7);
+   }
+</style>
+
+<!-- R syntax highlighter -->
+<script type="text/javascript">
+var hljs=new function(){function m(p){return p.replace(/&/gm,"&amp;").replace(/</gm,"&lt;")}function f(r,q,p){return RegExp(q,"m"+(r.cI?"i":"")+(p?"g":""))}function b(r){for(var p=0;p<r.childNodes.length;p++){var q=r.childNodes[p];if(q.nodeName=="CODE"){return q}if(!(q.nodeType==3&&q.nodeValue.match(/\s+/))){break}}}function h(t,s){var p="";for(var r=0;r<t.childNodes.length;r++){if(t.childNodes[r].nodeType==3){var q=t.childNodes[r].nodeValue;if(s){q=q.replace(/\n/g,"")}p+=q}else{if(t.childNodes[r].nodeName=="BR"){p+="\n"}else{p+=h(t.childNodes[r])}}}if(/MSIE [678]/.test(navigator.userAgent)){p=p.replace(/\r/g,"\n")}return p}function a(s){var r=s.className.split(/\s+/);r=r.concat(s.parentNode.className.split(/\s+/));for(var q=0;q<r.length;q++){var p=r[q].replace(/^language-/,"");if(e[p]){return p}}}function c(q){var p=[];(function(s,t){for(var r=0;r<s.childNodes.length;r++){if(s.childNodes[r].nodeType==3){t+=s.childNodes[r].nodeValue.length}else{if(s.childNodes[r].nodeName=="BR"){t+=1}else{if(s.childNodes[r].nodeType==1){p.push({event:"start",offset:t,node:s.childNodes[r]});t=arguments.callee(s.childNodes[r],t);p.push({event:"stop",offset:t,node:s.childNodes[r]})}}}}return t})(q,0);return p}function k(y,w,x){var q=0;var z="";var s=[];function u(){if(y.length&&w.length){if(y[0].offset!=w[0].offset){return(y[0].offset<w[0].offset)?y:w}else{return w[0].event=="start"?y:w}}else{return y.length?y:w}}function t(D){var A="<"+D.nodeName.toLowerCase();for(var B=0;B<D.attributes.length;B++){var C=D.attributes[B];A+=" "+C.nodeName.toLowerCase();if(C.value!==undefined&&C.value!==false&&C.value!==null){A+='="'+m(C.value)+'"'}}return A+">"}while(y.length||w.length){var v=u().splice(0,1)[0];z+=m(x.substr(q,v.offset-q));q=v.offset;if(v.event=="start"){z+=t(v.node);s.push(v.node)}else{if(v.event=="stop"){var p,r=s.length;do{r--;p=s[r];z+=("</"+p.nodeName.toLowerCase()+">")}while(p!=v.node);s.splice(r,1);while(r<s.length){z+=t(s[r]);r++}}}}return z+m(x.substr(q))}function j(){function q(x,y,v){if(x.compiled){return}var u;var s=[];if(x.k){x.lR=f(y,x.l||hljs.IR,true);for(var w in x.k){if(!x.k.hasOwnProperty(w)){continue}if(x.k[w] instanceof Object){u=x.k[w]}else{u=x.k;w="keyword"}for(var r in u){if(!u.hasOwnProperty(r)){continue}x.k[r]=[w,u[r]];s.push(r)}}}if(!v){if(x.bWK){x.b="\\b("+s.join("|")+")\\s"}x.bR=f(y,x.b?x.b:"\\B|\\b");if(!x.e&&!x.eW){x.e="\\B|\\b"}if(x.e){x.eR=f(y,x.e)}}if(x.i){x.iR=f(y,x.i)}if(x.r===undefined){x.r=1}if(!x.c){x.c=[]}x.compiled=true;for(var t=0;t<x.c.length;t++){if(x.c[t]=="self"){x.c[t]=x}q(x.c[t],y,false)}if(x.starts){q(x.starts,y,false)}}for(var p in e){if(!e.hasOwnProperty(p)){continue}q(e[p].dM,e[p],true)}}function d(B,C){if(!j.called){j();j.called=true}function q(r,M){for(var L=0;L<M.c.length;L++){if((M.c[L].bR.exec(r)||[null])[0]==r){return M.c[L]}}}function v(L,r){if(D[L].e&&D[L].eR.test(r)){return 1}if(D[L].eW){var M=v(L-1,r);return M?M+1:0}return 0}function w(r,L){return L.i&&L.iR.test(r)}function K(N,O){var M=[];for(var L=0;L<N.c.length;L++){M.push(N.c[L].b)}var r=D.length-1;do{if(D[r].e){M.push(D[r].e)}r--}while(D[r+1].eW);if(N.i){M.push(N.i)}return f(O,M.join("|"),true)}function p(M,L){var N=D[D.length-1];if(!N.t){N.t=K(N,E)}N.t.lastIndex=L;var r=N.t.exec(M);return r?[M.substr(L,r.index-L),r[0],false]:[M.substr(L),"",true]}function z(N,r){var L=E.cI?r[0].toLowerCase():r[0];var M=N.k[L];if(M&&M instanceof Array){return M}return false}function F(L,P){L=m(L);if(!P.k){return L}var r="";var O=0;P.lR.lastIndex=0;var M=P.lR.exec(L);while(M){r+=L.substr(O,M.index-O);var N=z(P,M);if(N){x+=N[1];r+='<span class="'+N[0]+'">'+M[0]+"</span>"}else{r+=M[0]}O=P.lR.lastIndex;M=P.lR.exec(L)}return r+L.substr(O,L.length-O)}function J(L,M){if(M.sL&&e[M.sL]){var r=d(M.sL,L);x+=r.keyword_count;return r.value}else{return F(L,M)}}function I(M,r){var L=M.cN?'<span class="'+M.cN+'">':"";if(M.rB){y+=L;M.buffer=""}else{if(M.eB){y+=m(r)+L;M.buffer=""}else{y+=L;M.buffer=r}}D.push(M);A+=M.r}function G(N,M,Q){var R=D[D.length-1];if(Q){y+=J(R.buffer+N,R);return false}var P=q(M,R);if(P){y+=J(R.buffer+N,R);I(P,M);return P.rB}var L=v(D.length-1,M);if(L){var O=R.cN?"</span>":"";if(R.rE){y+=J(R.buffer+N,R)+O}else{if(R.eE){y+=J(R.buffer+N,R)+O+m(M)}else{y+=J(R.buffer+N+M,R)+O}}while(L>1){O=D[D.length-2].cN?"</span>":"";y+=O;L--;D.length--}var r=D[D.length-1];D.length--;D[D.length-1].buffer="";if(r.starts){I(r.starts,"")}return R.rE}if(w(M,R)){throw"Illegal"}}var E=e[B];var D=[E.dM];var A=0;var x=0;var y="";try{var s,u=0;E.dM.buffer="";do{s=p(C,u);var t=G(s[0],s[1],s[2]);u+=s[0].length;if(!t){u+=s[1].length}}while(!s[2]);if(D.length>1){throw"Illegal"}return{r:A,keyword_count:x,value:y}}catch(H){if(H=="Illegal"){return{r:0,keyword_count:0,value:m(C)}}else{throw H}}}function g(t){var p={keyword_count:0,r:0,value:m(t)};var r=p;for(var q in e){if(!e.hasOwnProperty(q)){continue}var s=d(q,t);s.language=q;if(s.keyword_count+s.r>r.keyword_count+r.r){r=s}if(s.keyword_count+s.r>p.keyword_count+p.r){r=p;p=s}}if(r.language){p.second_best=r}return p}function i(r,q,p){if(q){r=r.replace(/^((<[^>]+>|\t)+)/gm,function(t,w,v,u){return w.replace(/\t/g,q)})}if(p){r=r.replace(/\n/g,"<br>")}return r}function n(t,w,r){var x=h(t,r);var v=a(t);var y,s;if(v){y=d(v,x)}else{return}var q=c(t);if(q.length){s=document.createElement("pre");s.innerHTML=y.value;y.value=k(q,c(s),x)}y.value=i(y.value,w,r);var u=t.className;if(!u.match("(\\s|^)(language-)?"+v+"(\\s|$)")){u=u?(u+" "+v):v}if(/MSIE [678]/.test(navigator.userAgent)&&t.tagName=="CODE"&&t.parentNode.tagName=="PRE"){s=t.parentNode;var p=document.createElement("div");p.innerHTML="<pre><code>"+y.value+"</code></pre>";t=p.firstChild.firstChild;p.firstChild.cN=s.cN;s.parentNode.replaceChild(p.firstChild,s)}else{t.innerHTML=y.value}t.className=u;t.result={language:v,kw:y.keyword_count,re:y.r};if(y.second_best){t.second_best={language:y.second_best.language,kw:y.second_best.keyword_count,re:y.second_best.r}}}function o(){if(o.called){return}o.called=true;var r=document.getElementsByTagName("pre");for(var p=0;p<r.length;p++){var q=b(r[p]);if(q){n(q,hljs.tabReplace)}}}function l(){if(window.addEventListener){window.addEventListener("DOMContentLoaded",o,false);window.addEventListener("load",o,false)}else{if(window.attachEvent){window.attachEvent("onload",o)}else{window.onload=o}}}var e={};this.LANGUAGES=e;this.highlight=d;this.highlightAuto=g;this.fixMarkup=i;this.highlightBlock=n;this.initHighlighting=o;this.initHighlightingOnLoad=l;this.IR="[a-zA-Z][a-zA-Z0-9_]*";this.UIR="[a-zA-Z_][a-zA-Z0-9_]*";this.NR="\\b\\d+(\\.\\d+)?";this.CNR="\\b(0[xX][a-fA-F0-9]+|(\\d+(\\.\\d*)?|\\.\\d+)([eE][-+]?\\d+)?)";this.BNR="\\b(0b[01]+)";this.RSR="!|!=|!==|%|%=|&|&&|&=|\\*|\\*=|\\+|\\+=|,|\\.|-|-=|/|/=|:|;|<|<<|<<=|<=|=|==|===|>|>=|>>|>>=|>>>|>>>=|\\?|\\[|\\{|\\(|\\^|\\^=|\\||\\|=|\\|\\||~";this.ER="(?![\\s\\S])";this.BE={b:"\\\\.",r:0};this.ASM={cN:"string",b:"'",e:"'",i:"\\n",c:[this.BE],r:0};this.QSM={cN:"string",b:'"',e:'"',i:"\\n",c:[this.BE],r:0};this.CLCM={cN:"comment",b:"//",e:"$"};this.CBLCLM={cN:"comment",b:"/\\*",e:"\\*/"};this.HCM={cN:"comment",b:"#",e:"$"};this.NM={cN:"number",b:this.NR,r:0};this.CNM={cN:"number",b:this.CNR,r:0};this.BNM={cN:"number",b:this.BNR,r:0};this.inherit=function(r,s){var p={};for(var q in r){p[q]=r[q]}if(s){for(var q in s){p[q]=s[q]}}return p}}();hljs.LANGUAGES.r={dM:{c:[hljs.HCM,{cN:"number",b:"\\b0[xX][0-9a-fA-F]+[Li]?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+(?:[eE][+\\-]?\\d*)?L\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+\\.(?!\\d)(?:i\\b)?",e:hljs.IMMEDIATE_RE,r:1},{cN:"number",b:"\\b\\d+(?:\\.\\d*)?(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\.\\d+(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"keyword",b:"(?:tryCatch|library|setGeneric|setGroupGeneric)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\.",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\d+(?![\\w.])",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\b(?:function)",e:hljs.IMMEDIATE_RE,r:2},{cN:"keyword",b:"(?:if|in|break|next|repeat|else|for|return|switch|while|try|stop|warning|require|attach|detach|source|setMethod|setClass)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"literal",b:"(?:NA|NA_integer_|NA_real_|NA_character_|NA_complex_)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"literal",b:"(?:NULL|TRUE|FALSE|T|F|Inf|NaN)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"identifier",b:"[a-zA-Z.][a-zA-Z0-9._]*\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"<\\-(?!\\s*\\d)",e:hljs.IMMEDIATE_RE,r:2},{cN:"operator",b:"\\->|<\\-",e:hljs.IMMEDIATE_RE,r:1},{cN:"operator",b:"%%|~",e:hljs.IMMEDIATE_RE},{cN:"operator",b:">=|<=|==|!=|\\|\\||&&|=|\\+|\\-|\\*|/|\\^|>|<|!|&|\\||\\$|:",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"%",e:"%",i:"\\n",r:1},{cN:"identifier",b:"`",e:"`",r:0},{cN:"string",b:'"',e:'"',c:[hljs.BE],r:0},{cN:"string",b:"'",e:"'",c:[hljs.BE],r:0},{cN:"paren",b:"[[({\\])}]",e:hljs.IMMEDIATE_RE,r:0}]}};
+hljs.initHighlightingOnLoad();
+</script>
+
+
+
+
+</head>
+
+<body>
+<h1>Data Import</h1>
+
+<p>Data were downloaded from <a href="http://www.oecdbetterlifeindex.org/">http://www.oecdbetterlifeindex.org/</a><br/>
+Speicifically I downloaded the version of <a href="http://www.oecdbetterlifeindex.org/wpsystem/wp-content/uploads/2012/06/online_data_file_V3.xlsx">the datafile from 2012 06 V3</a></p>
+
+<p>I&#39;ve put a dput copy of the data to make the file self-contained.</p>
+
+<pre><code class="r"># oecd &lt;- read.delim(&#39;oecd-life.csv&#39;, as.is=TRUE)
+# dput(oecd)
+oecd &lt;- structure(list(COUNTRY = c(&quot;Australia&quot;, &quot;Austria&quot;, &quot;Belgium&quot;, 
+&quot;Brazil&quot;, &quot;Canada&quot;, &quot;Chile&quot;, &quot;Czech Republic&quot;, &quot;Denmark&quot;, &quot;Estonia&quot;, 
+&quot;Finland&quot;, &quot;France&quot;, &quot;Germany&quot;, &quot;Greece&quot;, &quot;Hungary&quot;, &quot;Iceland&quot;, 
+&quot;Ireland&quot;, &quot;Israel&quot;, &quot;Italy&quot;, &quot;Japan&quot;, &quot;Korea&quot;, &quot;Luxembourg&quot;, 
+&quot;Mexico&quot;, &quot;Netherlands&quot;, &quot;New Zealand&quot;, &quot;Norway&quot;, &quot;Poland&quot;, &quot;Portugal&quot;, 
+&quot;Russian Federation&quot;, &quot;Slovak Republic&quot;, &quot;Slovenia&quot;, &quot;Spain&quot;, 
+&quot;Sweden&quot;, &quot;Switzerland&quot;, &quot;Turkey&quot;, &quot;United Kingdom&quot;, &quot;United States&quot;, 
+&quot;OECD average&quot;), Households.income = c(&quot;26927 USD&quot;, &quot;27541 USD&quot;, 
+&quot;26734 USD&quot;, &quot;&quot;, &quot;27138 USD&quot;, &quot;8618 USD&quot;, &quot;16614 USD&quot;, &quot;23213 USD&quot;, 
+&quot;13149 USD&quot;, &quot;24958 USD&quot;, &quot;27789 USD&quot;, &quot;27692 USD&quot;, &quot;22134 USD&quot;, 
+&quot;13696 USD&quot;, &quot;&quot;, &quot;24156 USD&quot;, &quot;&quot;, &quot;23917 USD&quot;, &quot;23458 USD&quot;, &quot;16570 USD&quot;, 
+&quot;35321 USD&quot;, &quot;11106 USD&quot;, &quot;25740 USD&quot;, &quot;18601 USD&quot;, &quot;30465 USD&quot;, 
+&quot;14508 USD&quot;, &quot;18689 USD&quot;, &quot;13911 USD&quot;, &quot;15840 USD&quot;, &quot;19334 USD&quot;, 
+&quot;23541 USD&quot;, &quot;26633 USD&quot;, &quot;27756 USD&quot;, &quot;&quot;, &quot;26552 USD&quot;, &quot;37708 USD&quot;, 
+&quot;22387 USD&quot;), Household.financial.wealth = c(&quot;29630 USD&quot;, &quot;45468 USD&quot;, 
+&quot;69466 USD&quot;, &quot;&quot;, &quot;60344 USD&quot;, &quot;15355 USD&quot;, &quot;13681 USD&quot;, &quot;31025 USD&quot;, 
+&quot;11231 USD&quot;, &quot;19751 USD&quot;, &quot;44353 USD&quot;, &quot;41695 USD&quot;, &quot;17638 USD&quot;, 
+&quot;11812 USD&quot;, &quot;&quot;, &quot;21485 USD&quot;, &quot;47750 USD&quot;, &quot;54706 USD&quot;, &quot;71717 USD&quot;, 
+&quot;23715 USD&quot;, &quot;72644 USD&quot;, &quot;11728 USD&quot;, &quot;61157 USD&quot;, &quot;&quot;, &quot;6197 USD&quot;, 
+&quot;8101 USD&quot;, &quot;27299 USD&quot;, &quot;&quot;, &quot;2189 USD&quot;, &quot;19852 USD&quot;, &quot;22684 USD&quot;, 
+&quot;38616 USD&quot;, &quot;95407 USD&quot;, &quot;&quot;, &quot;59923 USD&quot;, &quot;102075 USD&quot;, &quot;36238 USD&quot;
+), Employment.rate = c(&quot;72%&quot;, &quot;72%&quot;, &quot;62%&quot;, &quot;68%&quot;, &quot;72%&quot;, &quot;59%&quot;, 
+&quot;65%&quot;, &quot;73%&quot;, &quot;61%&quot;, &quot;68%&quot;, &quot;64%&quot;, &quot;71%&quot;, &quot;60%&quot;, &quot;55%&quot;, &quot;79%&quot;, 
+&quot;60%&quot;, &quot;60%&quot;, &quot;57%&quot;, &quot;70%&quot;, &quot;63%&quot;, &quot;65%&quot;, &quot;60%&quot;, &quot;75%&quot;, &quot;72%&quot;, 
+&quot;75%&quot;, &quot;59%&quot;, &quot;66%&quot;, &quot;67%&quot;, &quot;59%&quot;, &quot;66%&quot;, &quot;59%&quot;, &quot;73%&quot;, &quot;79%&quot;, 
+&quot;46%&quot;, &quot;70%&quot;, &quot;67%&quot;, &quot;66%&quot;), Personal.earnings = c(&quot;42550 USD&quot;, 
+&quot;41904 USD&quot;, &quot;42811 USD&quot;, &quot;&quot;, &quot;41961 USD&quot;, &quot;11299 USD&quot;, &quot;20424 USD&quot;, 
+&quot;42904 USD&quot;, &quot;17145 USD&quot;, &quot;35319 USD&quot;, &quot;37229 USD&quot;, &quot;38251 USD&quot;, 
+&quot;28200 USD&quot;, &quot;18667 USD&quot;, &quot;47257 USD&quot;, &quot;48217 USD&quot;, &quot;31155 USD&quot;, 
+&quot;32404 USD&quot;, &quot;33900 USD&quot;, &quot;31733 USD&quot;, &quot;52110 USD&quot;, &quot;11020 USD&quot;, 
+&quot;45671 USD&quot;, &quot;31878 USD&quot;, &quot;44164 USD&quot;, &quot;18172 USD&quot;, &quot;21722 USD&quot;, 
+&quot;&quot;, &quot;18719 USD&quot;, &quot;32308 USD&quot;, &quot;32454 USD&quot;, &quot;36766 USD&quot;, &quot;49810 USD&quot;, 
+&quot;22397 USD&quot;, &quot;44008 USD&quot;, &quot;52607 USD&quot;, &quot;34033 USD&quot;), Job.security = c(&quot;11.70%&quot;, 
+&quot;8.80%&quot;, &quot;6.46%&quot;, &quot;14.03%&quot;, &quot;11.26%&quot;, &quot;&quot;, &quot;6.36%&quot;, &quot;12.36%&quot;, 
+&quot;9.63%&quot;, &quot;13.42%&quot;, &quot;9.02%&quot;, &quot;7.79%&quot;, &quot;5.74%&quot;, &quot;7.72%&quot;, &quot;12.73%&quot;, 
+&quot;7.13%&quot;, &quot;&quot;, &quot;6.55%&quot;, &quot;10.23%&quot;, &quot;25.80%&quot;, &quot;5.56%&quot;, &quot;18.02%&quot;, 
+&quot;5.18%&quot;, &quot;&quot;, &quot;7.72%&quot;, &quot;9.07%&quot;, &quot;7.35%&quot;, &quot;&quot;, &quot;6.14%&quot;, &quot;6.85%&quot;, 
+&quot;10.77%&quot;, &quot;13.17%&quot;, &quot;8.30%&quot;, &quot;22.67%&quot;, &quot;6.89%&quot;, &quot;11.38%&quot;, &quot;10.07%&quot;
+), Long.term.unemployment.rate = c(&quot;0.97%&quot;, &quot;1.11%&quot;, &quot;4.04%&quot;, 
+&quot;&quot;, &quot;0.96%&quot;, &quot;&quot;, &quot;3.16%&quot;, &quot;1.42%&quot;, &quot;7.63%&quot;, &quot;1.98%&quot;, &quot;3.74%&quot;, 
+&quot;3.34%&quot;, &quot;5.64%&quot;, &quot;5.64%&quot;, &quot;1.61%&quot;, &quot;6.69%&quot;, &quot;1.48%&quot;, &quot;4.08%&quot;, 
+&quot;1.88%&quot;, &quot;0.01%&quot;, &quot;1.28%&quot;, &quot;0.13%&quot;, &quot;1.23%&quot;, &quot;0.59%&quot;, &quot;0.34%&quot;, 
+&quot;2.46%&quot;, &quot;5.64%&quot;, &quot;2.23%&quot;, &quot;8.52%&quot;, &quot;3.13%&quot;, &quot;9.04%&quot;, &quot;1.39%&quot;, 
+&quot;1.46%&quot;, &quot;3.40%&quot;, &quot;2.53%&quot;, &quot;2.79%&quot;, &quot;3.04%&quot;), Rooms.per.person = c(&quot;&quot;, 
+&quot;1.7 rooms&quot;, &quot;2.1 rooms&quot;, &quot;&quot;, &quot;&quot;, &quot;1.3 rooms&quot;, &quot;1.4 rooms&quot;, &quot;1.9 rooms&quot;, 
+&quot;1.2 rooms&quot;, &quot;1.9 rooms&quot;, &quot;1.8 rooms&quot;, &quot;1.8 rooms&quot;, &quot;1.2 rooms&quot;, 
+&quot;1 rooms&quot;, &quot;1.6 rooms&quot;, &quot;2.1 rooms&quot;, &quot;1.2 rooms&quot;, &quot;1.4 rooms&quot;, 
+&quot;1.8 rooms&quot;, &quot;1.4 rooms&quot;, &quot;1.9 rooms&quot;, &quot;1 rooms&quot;, &quot;2 rooms&quot;, 
+&quot;&quot;, &quot;2 rooms&quot;, &quot;1 rooms&quot;, &quot;1.4 rooms&quot;, &quot;&quot;, &quot;1.1 rooms&quot;, &quot;1.1 rooms&quot;, 
+&quot;1.9 rooms&quot;, &quot;1.8 rooms&quot;, &quot;1.8 rooms&quot;, &quot;0.9 rooms&quot;, &quot;1.8 rooms&quot;, 
+&quot;&quot;, &quot;1.6 rooms&quot;), Housing.expenditure = c(&quot;21%&quot;, &quot;22%&quot;, &quot;20%&quot;, 
+&quot;&quot;, &quot;23%&quot;, &quot;21%&quot;, &quot;26%&quot;, &quot;26%&quot;, &quot;21%&quot;, &quot;23%&quot;, &quot;21%&quot;, &quot;22%&quot;, &quot;28%&quot;, 
+&quot;23%&quot;, &quot;&quot;, &quot;18%&quot;, &quot;&quot;, &quot;23%&quot;, &quot;23%&quot;, &quot;16%&quot;, &quot;25%&quot;, &quot;19%&quot;, &quot;22%&quot;, 
+&quot;29%&quot;, &quot;19%&quot;, &quot;24%&quot;, &quot;18%&quot;, &quot;11%&quot;, &quot;26%&quot;, &quot;20%&quot;, &quot;20%&quot;, &quot;22%&quot;, 
+&quot;24%&quot;, &quot;&quot;, &quot;23%&quot;, &quot;20%&quot;, &quot;22%&quot;), Dwellings.with.basic.facilities = c(&quot;&quot;, 
+&quot;98.80%&quot;, &quot;99.70%&quot;, &quot;93.33%&quot;, &quot;99.81%&quot;, &quot;90.64%&quot;, &quot;99.30%&quot;, &quot;100%&quot;, 
+&quot;88.90%&quot;, &quot;99.30%&quot;, &quot;99.30%&quot;, &quot;98.40%&quot;, &quot;98.60%&quot;, &quot;93.40%&quot;, &quot;99.60%&quot;, 
+&quot;99.80%&quot;, &quot;&quot;, &quot;99.80%&quot;, &quot;93.60%&quot;, &quot;95.84%&quot;, &quot;99.50%&quot;, &quot;95.81%&quot;, 
+&quot;100%&quot;, &quot;&quot;, &quot;99.90%&quot;, &quot;95.90%&quot;, &quot;98.40%&quot;, &quot;&quot;, &quot;98.80%&quot;, &quot;99.60%&quot;, 
+&quot;100%&quot;, &quot;100%&quot;, &quot;99.90%&quot;, &quot;87.33%&quot;, &quot;99.50%&quot;, &quot;100%&quot;, &quot;97.75%&quot;
+), Employees.working.very.long.hours = c(&quot;13.99%&quot;, &quot;9.02%&quot;, &quot;4.45%&quot;, 
+&quot;12.50%&quot;, &quot;3.91%&quot;, &quot;7.15%&quot;, &quot;8.75%&quot;, &quot;1.92%&quot;, &quot;3.55%&quot;, &quot;3.66%&quot;, 
+&quot;8.63%&quot;, &quot;5.14%&quot;, &quot;5.20%&quot;, &quot;3.33%&quot;, &quot;&quot;, &quot;3.72%&quot;, &quot;18.92%&quot;, &quot;4.62%&quot;, 
+&quot;&quot;, &quot;&quot;, &quot;3.71%&quot;, &quot;28.90%&quot;, &quot;0.68%&quot;, &quot;13.28%&quot;, &quot;2.66%&quot;, &quot;7.35%&quot;, 
+&quot;5.36%&quot;, &quot;0.17%&quot;, &quot;5.82%&quot;, &quot;6.08%&quot;, &quot;6.66%&quot;, &quot;1.28%&quot;, &quot;5.87%&quot;, 
+&quot;43%&quot;, &quot;11.71%&quot;, &quot;10.86%&quot;, &quot;9.47%&quot;), Time.devoted.to.leisure.and.personal.care = c(&quot;14.41 hours&quot;, 
+&quot;14.46 hours&quot;, &quot;15.71 hours&quot;, &quot;&quot;, &quot;14.25 hours&quot;, &quot;&quot;, &quot;14.34 hours&quot;, 
+&quot;16.06 hours&quot;, &quot;14.2 hours&quot;, &quot;14.89 hours&quot;, &quot;15.33 hours&quot;, &quot;15.31 hours&quot;, 
+&quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;14.89 hours&quot;, &quot;13.96 hours&quot;, &quot;14.63 hours&quot;, 
+&quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;14.87 hours&quot;, &quot;15.56 hours&quot;, &quot;14.2 hours&quot;, &quot;&quot;, &quot;&quot;, 
+&quot;&quot;, &quot;14.62 hours&quot;, &quot;15.85 hours&quot;, &quot;15.11 hours&quot;, &quot;&quot;, &quot;&quot;, &quot;14.83 hours&quot;, 
+&quot;14.27 hours&quot;, &quot;14.76 hours&quot;), Life.expectancy = c(&quot;81.8 years&quot;, 
+&quot;80.7 years&quot;, &quot;80.3 years&quot;, &quot;73.2 years&quot;, &quot;80.8 years&quot;, &quot;79 years&quot;, 
+&quot;77.7 years&quot;, &quot;79.3 years&quot;, &quot;75.6 years&quot;, &quot;80.2 years&quot;, &quot;81.4 years&quot;, 
+&quot;80.5 years&quot;, &quot;80.6 years&quot;, &quot;74.3 years&quot;, &quot;81.5 years&quot;, &quot;81 years&quot;, 
+&quot;81.7 years&quot;, &quot;82 years&quot;, &quot;83 years&quot;, &quot;80.7 years&quot;, &quot;80.7 years&quot;, 
+&quot;75.5 years&quot;, &quot;80.8 years&quot;, &quot;81 years&quot;, &quot;81.2 years&quot;, &quot;76.3 years&quot;, 
+&quot;79.8 years&quot;, &quot;69 years&quot;, &quot;75.2 years&quot;, &quot;79.5 years&quot;, &quot;82.2 years&quot;, 
+&quot;81.5 years&quot;, &quot;82.6 years&quot;, &quot;74.3 years&quot;, &quot;80.4 years&quot;, &quot;78.7 years&quot;, 
+&quot;79.8 years&quot;), Self.reported.health = c(&quot;85%&quot;, &quot;69%&quot;, &quot;77%&quot;, 
+&quot;&quot;, &quot;88%&quot;, &quot;59%&quot;, &quot;68%&quot;, &quot;71%&quot;, &quot;55%&quot;, &quot;68%&quot;, &quot;68%&quot;, &quot;65%&quot;, &quot;76%&quot;, 
+&quot;54%&quot;, &quot;78%&quot;, &quot;83%&quot;, &quot;81%&quot;, &quot;67%&quot;, &quot;30%&quot;, &quot;38%&quot;, &quot;75%&quot;, &quot;66%&quot;, 
+&quot;77%&quot;, &quot;90%&quot;, &quot;80%&quot;, &quot;58%&quot;, &quot;49%&quot;, &quot;&quot;, &quot;63%&quot;, &quot;59%&quot;, &quot;74%&quot;, &quot;79%&quot;, 
+&quot;87%&quot;, &quot;66%&quot;, &quot;76%&quot;, &quot;90%&quot;, &quot;70%&quot;), Educational.attainment = c(&quot;71%&quot;, 
+&quot;82%&quot;, &quot;71%&quot;, &quot;41%&quot;, &quot;88%&quot;, &quot;69%&quot;, &quot;91%&quot;, &quot;76%&quot;, &quot;89%&quot;, &quot;82%&quot;, 
+&quot;70%&quot;, &quot;85%&quot;, &quot;61%&quot;, &quot;81%&quot;, &quot;66%&quot;, &quot;72%&quot;, &quot;82%&quot;, &quot;54%&quot;, &quot;&quot;, &quot;80%&quot;, 
+&quot;77%&quot;, &quot;35%&quot;, &quot;73%&quot;, &quot;72%&quot;, &quot;81%&quot;, &quot;88%&quot;, &quot;30%&quot;, &quot;88%&quot;, &quot;91%&quot;, 
+&quot;83%&quot;, &quot;52%&quot;, &quot;86%&quot;, &quot;87%&quot;, &quot;33%&quot;, &quot;74%&quot;, &quot;89%&quot;, &quot;74%&quot;), Years.in.education = c(&quot;18.4 years&quot;, 
+&quot;16.6 years&quot;, &quot;18.7 years&quot;, &quot;16.3 years&quot;, &quot;17 years&quot;, &quot;15.6 years&quot;, 
+&quot;17.6 years&quot;, &quot;18.4 years&quot;, &quot;17.5 years&quot;, &quot;19.5 years&quot;, &quot;16.5 years&quot;, 
+&quot;17.7 years&quot;, &quot;18.1 years&quot;, &quot;17.5 years&quot;, &quot;18.9 years&quot;, &quot;17.6 years&quot;, 
+&quot;15.5 years&quot;, &quot;17 years&quot;, &quot;&quot;, &quot;17.2 years&quot;, &quot;14.7 years&quot;, &quot;14.6 years&quot;, 
+&quot;17.7 years&quot;, &quot;18.6 years&quot;, &quot;17.8 years&quot;, &quot;18.1 years&quot;, &quot;18.1 years&quot;, 
+&quot;16.6 years&quot;, &quot;16.4 years&quot;, &quot;18.3 years&quot;, &quot;16.9 years&quot;, &quot;18.9 years&quot;, 
+&quot;17 years&quot;, &quot;14.2 years&quot;, &quot;16.3 years&quot;, &quot;16.9 years&quot;, &quot;17.3 years&quot;
+), Students..skills = c(&quot;519 score&quot;, &quot;487 score&quot;, &quot;509 score&quot;, 
+&quot;401 score&quot;, &quot;527 score&quot;, &quot;439 score&quot;, &quot;490 score&quot;, &quot;499 score&quot;, 
+&quot;514 score&quot;, &quot;543 score&quot;, &quot;497 score&quot;, &quot;510 score&quot;, &quot;473 score&quot;, 
+&quot;496 score&quot;, &quot;501 score&quot;, &quot;497 score&quot;, &quot;459 score&quot;, &quot;486 score&quot;, 
+&quot;529 score&quot;, &quot;541 score&quot;, &quot;482 score&quot;, &quot;420 score&quot;, &quot;519 score&quot;, 
+&quot;524 score&quot;, &quot;500 score&quot;, &quot;501 score&quot;, &quot;490 score&quot;, &quot;469 score&quot;, 
+&quot;488 score&quot;, &quot;499 score&quot;, &quot;484 score&quot;, &quot;496 score&quot;, &quot;517 score&quot;, 
+&quot;455 score&quot;, &quot;500 score&quot;, &quot;496 score&quot;, &quot;497 score&quot;), Social.network = c(&quot;97%&quot;, 
+&quot;94%&quot;, &quot;94%&quot;, &quot;91%&quot;, &quot;92%&quot;, &quot;86%&quot;, &quot;91%&quot;, &quot;96%&quot;, &quot;91%&quot;, &quot;94%&quot;, 
+&quot;92%&quot;, &quot;95%&quot;, &quot;85%&quot;, &quot;89%&quot;, &quot;98%&quot;, &quot;98%&quot;, &quot;88%&quot;, &quot;91%&quot;, &quot;92%&quot;, 
+&quot;81%&quot;, &quot;93%&quot;, &quot;82%&quot;, &quot;94%&quot;, &quot;95%&quot;, &quot;94%&quot;, &quot;90%&quot;, &quot;86%&quot;, &quot;88%&quot;, 
+&quot;92%&quot;, &quot;93%&quot;, &quot;94%&quot;, &quot;92%&quot;, &quot;94%&quot;, &quot;69%&quot;, &quot;96%&quot;, &quot;92%&quot;, &quot;91%&quot;
+), Consultation.on.rule.making = c(&quot;10.5 index&quot;, &quot;7.1 index&quot;, 
+&quot;4.5 index&quot;, &quot;4 index&quot;, &quot;10.5 index&quot;, &quot;2 index&quot;, &quot;6.8 index&quot;, 
+&quot;7 index&quot;, &quot;3.3 index&quot;, &quot;9 index&quot;, &quot;3.5 index&quot;, &quot;4.5 index&quot;, 
+&quot;6.5 index&quot;, &quot;7.9 index&quot;, &quot;5.1 index&quot;, &quot;9 index&quot;, &quot;2.5 index&quot;, 
+&quot;5 index&quot;, &quot;7.3 index&quot;, &quot;10.4 index&quot;, &quot;6 index&quot;, &quot;9 index&quot;, &quot;6.1 index&quot;, 
+&quot;10.3 index&quot;, &quot;8.1 index&quot;, &quot;10.8 index&quot;, &quot;6.5 index&quot;, &quot;&quot;, &quot;6.6 index&quot;, 
+&quot;10.3 index&quot;, &quot;7.3 index&quot;, &quot;10.9 index&quot;, &quot;8.4 index&quot;, &quot;5.5 index&quot;, 
+&quot;11.5 index&quot;, &quot;8.3 index&quot;, &quot;7.3 index&quot;), Voter.turn.out = c(&quot;95%&quot;, 
+&quot;82%&quot;, &quot;91%&quot;, &quot;83%&quot;, &quot;60%&quot;, &quot;88%&quot;, &quot;64%&quot;, &quot;87%&quot;, &quot;62%&quot;, &quot;74%&quot;, 
+&quot;84%&quot;, &quot;78%&quot;, &quot;71%&quot;, &quot;64%&quot;, &quot;84%&quot;, &quot;67%&quot;, &quot;64%&quot;, &quot;81%&quot;, &quot;67%&quot;, 
+&quot;63%&quot;, &quot;91%&quot;, &quot;59%&quot;, &quot;80%&quot;, &quot;79%&quot;, &quot;77%&quot;, &quot;54%&quot;, &quot;64%&quot;, &quot;64%&quot;, 
+&quot;55%&quot;, &quot;63%&quot;, &quot;75%&quot;, &quot;82%&quot;, &quot;48%&quot;, &quot;83%&quot;, &quot;61%&quot;, &quot;90%&quot;, &quot;73%&quot;
+), Water.quality = c(&quot;92%&quot;, &quot;94%&quot;, &quot;84%&quot;, &quot;84%&quot;, &quot;90%&quot;, &quot;85%&quot;, 
+&quot;87%&quot;, &quot;96%&quot;, &quot;70%&quot;, &quot;94%&quot;, &quot;80%&quot;, &quot;96%&quot;, &quot;61%&quot;, &quot;78%&quot;, &quot;97%&quot;, 
+&quot;89%&quot;, &quot;59%&quot;, &quot;80%&quot;, &quot;88%&quot;, &quot;82%&quot;, &quot;92%&quot;, &quot;71%&quot;, &quot;95%&quot;, &quot;88%&quot;, 
+&quot;95%&quot;, &quot;77%&quot;, &quot;88%&quot;, &quot;51%&quot;, &quot;85%&quot;, &quot;88%&quot;, &quot;81%&quot;, &quot;97%&quot;, &quot;97%&quot;, 
+&quot;65%&quot;, &quot;97%&quot;, &quot;86%&quot;, &quot;85%&quot;), Air.pollution = c(&quot;14 micrograms&quot;, 
+&quot;29 micrograms&quot;, &quot;21 micrograms&quot;, &quot;21 micrograms&quot;, &quot;15 micrograms&quot;, 
+&quot;62 micrograms&quot;, &quot;18 micrograms&quot;, &quot;16 micrograms&quot;, &quot;13 micrograms&quot;, 
+&quot;15 micrograms&quot;, &quot;13 micrograms&quot;, &quot;16 micrograms&quot;, &quot;32 micrograms&quot;, 
+&quot;16 micrograms&quot;, &quot;14 micrograms&quot;, &quot;13 micrograms&quot;, &quot;28 micrograms&quot;, 
+&quot;23 micrograms&quot;, &quot;27 micrograms&quot;, &quot;31 micrograms&quot;, &quot;13 micrograms&quot;, 
+&quot;33 micrograms&quot;, &quot;31 micrograms&quot;, &quot;12 micrograms&quot;, &quot;16 micrograms&quot;, 
+&quot;35 micrograms&quot;, &quot;21 micrograms&quot;, &quot;16 micrograms&quot;, &quot;13 micrograms&quot;, 
+&quot;29 micrograms&quot;, &quot;28 micrograms&quot;, &quot;11 micrograms&quot;, &quot;22 micrograms&quot;, 
+&quot;37 micrograms&quot;, &quot;13 micrograms&quot;, &quot;19 micrograms&quot;, &quot;22 micrograms&quot;
+), Homicide.rate = c(&quot;1.2 homicides&quot;, &quot;0.5 homicides&quot;, &quot;1.7 homicides&quot;, 
+&quot;22.7 homicides&quot;, &quot;1.8 homicides&quot;, &quot;3.7 homicides&quot;, &quot;0.9 homicides&quot;, 
+&quot;0.9 homicides&quot;, &quot;5.2 homicides&quot;, &quot;2.3 homicides&quot;, &quot;1.3 homicides&quot;, 
+&quot;0.8 homicides&quot;, &quot;1.1 homicides&quot;, &quot;1.4 homicides&quot;, &quot;0.3 homicides&quot;, 
+&quot;1.2 homicides&quot;, &quot;2.1 homicides&quot;, &quot;1 homicides&quot;, &quot;0.5 homicides&quot;, 
+&quot;2.8 homicides&quot;, &quot;2.5 homicides&quot;, &quot;19 homicides&quot;, &quot;1.1 homicides&quot;, 
+&quot;1.5 homicides&quot;, &quot;0.6 homicides&quot;, &quot;1.3 homicides&quot;, &quot;1.2 homicides&quot;, 
+&quot;11.2 homicides&quot;, &quot;1.6 homicides&quot;, &quot;0.6 homicides&quot;, &quot;0.9 homicides&quot;, 
+&quot;1 homicides&quot;, &quot;0.7 homicides&quot;, &quot;3.3 homicides&quot;, &quot;1.2 homicides&quot;, 
+&quot;5 homicides&quot;, &quot;2.1 homicides&quot;), Assault.rate = c(&quot;2.10%&quot;, &quot;2.98%&quot;, 
+&quot;6.67%&quot;, &quot;9.38%&quot;, &quot;1.31%&quot;, &quot;9.33%&quot;, &quot;2.96%&quot;, &quot;3.93%&quot;, &quot;5.52%&quot;, 
+&quot;2.36%&quot;, &quot;4.95%&quot;, &quot;3.60%&quot;, &quot;3.70%&quot;, &quot;3.59%&quot;, &quot;2.69%&quot;, &quot;2.63%&quot;, 
+&quot;6.54%&quot;, &quot;4.70%&quot;, &quot;1.37%&quot;, &quot;2.09%&quot;, &quot;4.29%&quot;, &quot;10.98%&quot;, &quot;4.88%&quot;, 
+&quot;2.23%&quot;, &quot;3.25%&quot;, &quot;1.81%&quot;, &quot;5.81%&quot;, &quot;2.83%&quot;, &quot;2.97%&quot;, &quot;3.91%&quot;, 
+&quot;4.18%&quot;, &quot;5.13%&quot;, &quot;4.20%&quot;, &quot;5.09%&quot;, &quot;1.93%&quot;, &quot;1.50%&quot;, &quot;3.98%&quot;
+), Life.Satisfaction = c(&quot;7.4 rate&quot;, &quot;7.5 rate&quot;, &quot;7 rate&quot;, &quot;6.8 rate&quot;, 
+&quot;7.4 rate&quot;, &quot;6.6 rate&quot;, &quot;6.3 rate&quot;, &quot;7.8 rate&quot;, &quot;5.5 rate&quot;, &quot;7.4 rate&quot;, 
+&quot;7 rate&quot;, &quot;6.7 rate&quot;, &quot;5.4 rate&quot;, &quot;4.9 rate&quot;, &quot;6.9 rate&quot;, &quot;6.9 rate&quot;, 
+&quot;7.4 rate&quot;, &quot;6.1 rate&quot;, &quot;6.1 rate&quot;, &quot;6.9 rate&quot;, &quot;7 rate&quot;, &quot;6.9 rate&quot;, 
+&quot;7.5 rate&quot;, &quot;7.2 rate&quot;, &quot;7.6 rate&quot;, &quot;5.6 rate&quot;, &quot;5.2 rate&quot;, &quot;5.3 rate&quot;, 
+&quot;5.9 rate&quot;, &quot;6 rate&quot;, &quot;6.5 rate&quot;, &quot;7.3 rate&quot;, &quot;7.5 rate&quot;, &quot;5.3 rate&quot;, 
+&quot;6.9 rate&quot;, &quot;7.1 rate&quot;, &quot;6.7 rate&quot;)), .Names = c(&quot;COUNTRY&quot;, &quot;Households.income&quot;, 
+&quot;Household.financial.wealth&quot;, &quot;Employment.rate&quot;, &quot;Personal.earnings&quot;, 
+&quot;Job.security&quot;, &quot;Long.term.unemployment.rate&quot;, &quot;Rooms.per.person&quot;, 
+&quot;Housing.expenditure&quot;, &quot;Dwellings.with.basic.facilities&quot;, &quot;Employees.working.very.long.hours&quot;, 
+&quot;Time.devoted.to.leisure.and.personal.care&quot;, &quot;Life.expectancy&quot;, 
+&quot;Self.reported.health&quot;, &quot;Educational.attainment&quot;, &quot;Years.in.education&quot;, 
+&quot;Students..skills&quot;, &quot;Social.network&quot;, &quot;Consultation.on.rule.making&quot;, 
+&quot;Voter.turn.out&quot;, &quot;Water.quality&quot;, &quot;Air.pollution&quot;, &quot;Homicide.rate&quot;, 
+&quot;Assault.rate&quot;, &quot;Life.Satisfaction&quot;), class = &quot;data.frame&quot;, row.names = c(NA, 
+-37L))
+</code></pre>
+
+<h1>Data Cleaning</h1>
+
+<pre><code class="r">oecd$Households.income &lt;- as.numeric(gsub(&quot; USD&quot;, &quot;&quot;, oecd$Households.income))
+oecd$Household.financial.wealth &lt;- as.numeric(gsub(&quot; USD&quot;, &quot;&quot;, oecd$Household.financial.wealth))
+oecd$Employment.rate &lt;- as.numeric(gsub(&#39;%&#39;, &#39;&#39;, oecd$Employment.rate)) / 100
+oecd$Personal.earnings &lt;- as.numeric(gsub(&quot; USD&quot;, &quot;&quot;, oecd$Personal.earnings))
+oecd$Job.security &lt;- as.numeric(gsub(&#39;%&#39;, &#39;&#39;, oecd$Job.security)) / 100
+oecd$Long.term.unemployment.rate &lt;- as.numeric(gsub(&#39;%&#39;, &#39;&#39;, oecd$Long.term.unemployment.rate)) / 100
+oecd$Rooms.per.person &lt;- as.numeric(gsub(&quot; rooms&quot;, &quot;&quot;, oecd$Rooms.per.person))
+oecd$Housing.expenditure &lt;- as.numeric(gsub(&#39;%&#39;, &#39;&#39;, oecd$Housing.expenditure)) / 100
+oecd$Dwellings.with.basic.facilities &lt;- as.numeric(gsub(&#39;%&#39;, &#39;&#39;, oecd$Dwellings.with.basic.facilities)) / 100
+oecd$Employees.working.very.long.hours &lt;- as.numeric(gsub(&#39;%&#39;, &#39;&#39;, oecd$Employees.working.very.long.hours)) / 100
+oecd$Time.devoted.to.leisure.and.personal.care &lt;- as.numeric(gsub(&quot; hours&quot;, &quot;&quot;, oecd$Time.devoted.to.leisure.and.personal.care))
+oecd$Life.expectancy &lt;- as.numeric(gsub(&quot; years&quot;, &quot;&quot;, oecd$Life.expectancy))
+oecd$Self.reported.health &lt;- as.numeric(gsub(&#39;%&#39;, &#39;&#39;, oecd$Self.reported.health)) / 100
+oecd$Educational.attainment &lt;- as.numeric(gsub(&#39;%&#39;, &#39;&#39;, oecd$Educational.attainment)) / 100
+oecd$Years.in.education &lt;- as.numeric(gsub(&quot; years&quot;, &quot;&quot;, oecd$Years.in.education))
+oecd$Students..skills &lt;- as.numeric(gsub(&quot; score&quot;, &quot;&quot;, oecd$Students..skills))
+oecd$Social.network &lt;- as.numeric(gsub(&quot;%&quot;, &quot;&quot;, oecd$Social.network)) / 100
+oecd$Consultation.on.rule.making &lt;- as.numeric(gsub(&quot; index&quot;, &quot;&quot;, oecd$Years.in.education))
+oecd$Voter.turn.out &lt;- as.numeric(gsub(&quot;%&quot;, &quot;&quot;, oecd$Voter.turn.out)) / 100
+oecd$Water.quality &lt;- as.numeric(gsub(&quot;%&quot;, &quot;&quot;, oecd$Water.quality)) / 100
+oecd$Air.pollution &lt;- as.numeric(gsub(&quot; micrograms&quot;, &quot;&quot;, oecd$Air.pollution))
+oecd$Homicide.rate &lt;- as.numeric(gsub(&quot; homicides&quot;, &quot;&quot;, oecd$Homicide.rate))
+oecd$Assault.rate &lt;- as.numeric(gsub(&quot;%&quot;, &quot;&quot;, oecd$Assault.rate)) / 100
+oecd$Life.Satisfaction &lt;- as.numeric(gsub(&quot; rate&quot;, &quot;&quot;, oecd$Life.Satisfaction))
+
+oecd &lt;- oecd[oecd$COUNTRY != &quot;OECD average&quot;, ]
+</code></pre>
+
+<h1>Details of study</h1>
+
+<p>The anlaysis included data on up to <code>36</code> countries. The following lists the countries.</p>
+
+<pre><code class="r">oecd$COUNTRY
+</code></pre>
+
+<pre><code>##  [1] &quot;Australia&quot;          &quot;Austria&quot;            &quot;Belgium&quot;           
+##  [4] &quot;Brazil&quot;             &quot;Canada&quot;             &quot;Chile&quot;             
+##  [7] &quot;Czech Republic&quot;     &quot;Denmark&quot;            &quot;Estonia&quot;           
+## [10] &quot;Finland&quot;            &quot;France&quot;             &quot;Germany&quot;           
+## [13] &quot;Greece&quot;             &quot;Hungary&quot;            &quot;Iceland&quot;           
+## [16] &quot;Ireland&quot;            &quot;Israel&quot;             &quot;Italy&quot;             
+## [19] &quot;Japan&quot;              &quot;Korea&quot;              &quot;Luxembourg&quot;        
+## [22] &quot;Mexico&quot;             &quot;Netherlands&quot;        &quot;New Zealand&quot;       
+## [25] &quot;Norway&quot;             &quot;Poland&quot;             &quot;Portugal&quot;          
+## [28] &quot;Russian Federation&quot; &quot;Slovak Republic&quot;    &quot;Slovenia&quot;          
+## [31] &quot;Spain&quot;              &quot;Sweden&quot;             &quot;Switzerland&quot;       
+## [34] &quot;Turkey&quot;             &quot;United Kingdom&quot;     &quot;United States&quot;     
+</code></pre>
+
+<h1>Correlation between life satisfaction an other measures</h1>
+
+<pre><code class="r">
+other_variables &lt;- names(oecd)[!names(oecd) %in% c(&quot;COUNTRY&quot;, &quot;Life.Satisfaction&quot;)]
+lifesat_correlations &lt;- cor(oecd$Life.Satisfaction, oecd[, other_variables], 
+    use = &quot;pair&quot;)[1, ]
+lifesat_correlations &lt;- data.frame(r = round(lifesat_correlations, 
+    2))
+lifesat_correlations$n &lt;- sapply(oecd[, other_variables], function(X) sum(!is.na(X)))
+lifesat_correlations$abs_r &lt;- abs(lifesat_correlations$r)
+lifesat_correlations[order(lifesat_correlations$abs_r, decreasing = TRUE), 
+    c(&quot;r&quot;, &quot;n&quot;)]
+</code></pre>
+
+<pre><code>##                                               r  n
+## Rooms.per.person                           0.70 30
+## Personal.earnings                          0.67 34
+## Employment.rate                            0.63 36
+## Households.income                          0.59 32
+## Water.quality                              0.59 36
+## Long.term.unemployment.rate               -0.58 34
+## Self.reported.health                       0.58 34
+## Life.expectancy                            0.57 36
+## Dwellings.with.basic.facilities            0.54 32
+## Social.network                             0.50 36
+## Time.devoted.to.leisure.and.personal.care  0.43 21
+## Household.financial.wealth                 0.41 31
+## Voter.turn.out                             0.36 36
+## Educational.attainment                     0.22 35
+## Students..skills                           0.21 36
+## Air.pollution                             -0.18 36
+## Housing.expenditure                        0.12 32
+## Years.in.education                         0.12 35
+## Consultation.on.rule.making                0.12 35
+## Employees.working.very.long.hours         -0.09 33
+## Job.security                               0.08 32
+## Homicide.rate                             -0.07 36
+## Assault.rate                              -0.02 36
+</code></pre>
+
+<ul>
+<li><code>r</code> shows the correlation between the variable and life satisfaction</li>
+<li><code>n</code> shows the number of countries supplying data for that variable. All countries supplied data for life satisfaction.</li>
+</ul>
+
+<p>Note that this is just a draft set of preliminary analyses, and I haven&#39;t thoroughly checked everything; I&#39;ll probably post a little more on this example at some point on <a href="http://jeromyanglim.blogspot.com">http://jeromyanglim.blogspot.com</a></p>
+
+</body>
+
+</html>
+
